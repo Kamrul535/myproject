@@ -1,43 +1,76 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Form | অর্ডার ফর্ম</title>
+    <style>
+        ::placeholder {
+            color:#999
+        }
+        body { 
+            background-color: #a8afae; 
+        }
+        body { font-family: Arial, sans-serif; text-align: center; padding: 100px; direction: rtl; }
+        .container { max-width: 500px; margin: auto; padding: 100px; background: #d35353; border-radius: 100px; }
+        input, select, textarea { width: 95%; padding: 10px; margin: 5px 0; }
+        button { background: blue; color: white; padding: 10px; border: none; cursor: pointer; width: 100%; }
+        button:hover { background: darkblue; }
+        .label { font-weight: bold; display: block; margin: 5px 0; }
+    </style>
+</head>
+<body>
+     <img src="c:\Users\WALTON\Downloads\450583984_122109390314387650_8780579445069690732_n-removebg-preview.png" width="200"height="200">
+     <p id="message">welcome to our  RM Leather Show <br>আরএম লেদার সো এ আপনাকে স্বাগতম
+     </p>
+     
+    <div class="container">
+        <h2>Place Your Order | আপনার অর্ডার দিন</h2>
+        <form id="orderForm">
+            <label class="label" for="name">See more products | আরও পন্য দেখুন
+               
+            <label class="label" for="name">Your Name | আপনার নাম</label>
+            <input type="text" id="name" placeholder="Your Name " required>
+            
+            <label class="label" for="email">Your Email | আপনার ইমেইল</label>
+            <input type="email" id="email" placeholder="Email" required>
+            
+            <label class="label" for="phone">Your Phone | আপনার ফোন নম্বর</label>
+            <input type="tel" id="phone" placeholder="Your Phone " required>
+            <label class="label" for="product">Select product | পন্য নির্বাচন করুন</label>
+            <button onclick="window.location.href='C:/Users/WALTON/OneDrive/Desktop/select%20product.html'">clik here to see more product |আরও  পন্য দেখতে এখানে চাপুন            </button>
+            <label class="label" for="product">Select Colour  | পন্যের রঙ নির্বাচন করুন</label>
+            <select id="product" required>
+                <option value="">Select Colour </option>
+                <option value="Product A">white (সাদা  )</option>
+                <option value="Product B">black (কালো )</option>
+                <option value="Product B">pink(গোলাপি )</option>
+                <option value="Product B">brown (বাদামি)</option>
+            </select>
+            
+            <label class="label" for="notes">Additional Notes | অতিরিক্ত মন্তব্য</label>
+            <textarea id="notes" placeholder="Additional Notes | অতিরিক্ত মন্তব্য"></textarea>
+            
+            <button type="submit">Submit Order | অর্ডার পাঠান</button>
+        </form>
+        <p id="message">Please fullill the  information above <br>দয়া করে উপরের তথ্যগুলো  অবশ্যই পরিপূর্ণ  করুন
+        </p>
+    </div>
 
-on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    <script>
+        document.getElementById("orderForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let product = document.getElementById("product").value;
+            let notes = document.getElementById("notes").value;
+    
+            // Fix the mailto URL by using backticks for the template literal
+            let mailto = `mailto:nbkhasan01816008035@gmail.com?subject=New Order | নতুন অর্ডার&body=Name | নাম: ${name}%0AEmail | ইমেইল: ${email}%0APhone | ফোন: ${phone}%0AProduct | পণ্য: ${product}%0ANotes | মন্তব্য: ${notes}`;
+            window.location.href = mailto;
+        });
+    </script>
+    
+</body>
+</html>
